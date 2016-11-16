@@ -1,0 +1,11 @@
+version: '2'
+services:
+  app:
+    image: scalac/rvm:latest
+    expose:
+      - 3000
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/src
+    entrypoint: bash -l -c "rm -f tmp/pids/* && gem install bundler && bundle && rails s -b 0.0.0.0"
